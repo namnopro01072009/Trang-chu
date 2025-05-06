@@ -1,0 +1,59 @@
+body {
+  background: #111;
+  color: white;
+  font-family: sans-serif;
+  padding: 20px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: lightblue;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: none;
+}
+
+.episodes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.episode {
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 200px;
+  text-align: center;
+}
+
+.episode img {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* hình vuông */
+  object-fit: cover;
+  display: block;
+}
+
+.episode .title {
+  padding: 10px;
+  color: #4dd0e1;
+  font-weight: bold;
+}
+.video-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}

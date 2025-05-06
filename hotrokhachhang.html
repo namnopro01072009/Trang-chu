@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hỗ trợ khách hàng</title>
+  <style>
+#sidebar {
+  position: relative;
+  top: 100px; /* Đẩy toàn bộ nội dung xuống, không dùng padding/margin */
+  background-color: white;
+  color: black;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  padding: 0 30px 30px 30px;
+}
+
+#sidebar .text-block {
+  margin-bottom: 30px; /* khoảng cách giữa mỗi cặp dòng */
+}
+
+#sidebar .text-block {
+  margin-bottom: 30px; /* khoảng cách sau mỗi 2 dòng */
+}
+    .logo-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #f00, 0 0 16px #f00;
+  animation: logoRainbow 4s linear infinite;
+}
+
+@keyframes logoRainbow {
+  0%   { box-shadow: 0 0 8px #f00, 0 0 16px #f00; }   /* đỏ */
+  16%  { box-shadow: 0 0 8px #ffa500, 0 0 16px #ffa500; } /* cam */
+  32%  { box-shadow: 0 0 8px #ff0, 0 0 16px #ff0; }   /* vàng */
+  48%  { box-shadow: 0 0 8px #0f0, 0 0 16px #0f0; }   /* xanh lá */
+  64%  { box-shadow: 0 0 8px #0ff, 0 0 16px #0ff; }   /* xanh biển */
+  80%  { box-shadow: 0 0 8px #00f, 0 0 16px #00f; }   /* xanh dương */
+  100% { box-shadow: 0 0 8px #f0f, 0 0 16px #f0f; }   /* tím */
+}
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  /* ban đầu để 1 màu bất kỳ */
+  color: #fff;
+  animation: textShake 0.3s infinite,
+             textRainbow 4s linear infinite;
+}
+
+@keyframes textRainbow {
+  0%   { text-shadow: 0 0 4px #f00, 0 0 8px #f00; color: #f00; }
+  16%  { text-shadow: 0 0 4px #ffa500, 0 0 8px #ffa500; color: #ffa500; }
+  32%  { text-shadow: 0 0 4px #ff0, 0 0 8px #ff0; color: #ff0; }
+  48%  { text-shadow: 0 0 4px #0f0, 0 0 8px #0f0; color: #0f0; }
+  64%  { text-shadow: 0 0 4px #0ff, 0 0 8px #0ff; color: #0ff; }
+  80%  { text-shadow: 0 0 4px #00f, 0 0 8px #00f; color: #00f; }
+  100% { text-shadow: 0 0 4px #f0f, 0 0 8px #f0f; color: #f0f; }
+}
+
+@keyframes textShake {
+  0%   { transform: translate(0,0); }
+  25%  { transform: translate(-1px,-1px); }
+  50%  { transform: translate(1px,1px); }
+  75%  { transform: translate(-1px,1px); }
+  100% { transform: translate(1px,-1px); }
+}
+.back-link {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10000; /* cao hơn sidebar */
+  background: #007BFF;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+  </style>
+</head>
+<body>
+ <a 
+  href="https://namnopro01072009.github.io/Trang-chu/index.html" 
+  class="back-link">←Quay lại trang chủ</a>
+<div id="sidebar">
+  <div class="text-block">
+    Nếu bạn nào có ý kiến hoặc góp ý riêng thì liên hệ cho mình qua email này nha : mbappefan731@gmail.com , mình sẵn sàng giúp đỡ💜<br>
+    MAIL : mbappefan731@gmail.com
+    
+  </div>
+</div>
+
+<div class="logo-container">
+  <img src="logo.png" alt="Logo" class="logo-img">
+  <span class="logo-text">Trang Phim</span>
+</div>
+</div>
+  </div>
+</body>
+</html>

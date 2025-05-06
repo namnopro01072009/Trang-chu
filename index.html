@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Trang Phim</title>
+  <style>
+    body {
+      background-color: #111;
+      color: white;
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background-color: #222;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu-toggle {
+      font-size: 24px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+
+    .title {
+      font-size: 20px;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 200px;
+      height: 100%;
+      background-color: #333;
+      padding-top: 50px;
+      display: none;
+      flex-direction: column;
+    }
+
+    #sidebar a {
+      color: white;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+    }
+
+    #sidebar a:hover {
+      background-color: #555;
+    }
+
+    .content {
+      margin-left: 0;
+      padding: 20px;
+    }
+
+    .search {
+      margin-bottom: 20px;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+    }
+
+    .film-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .film-card {
+      background: #222;
+      padding: 10px;
+      border-radius: 10px;
+      width: 45%;
+      text-align: center;
+    }
+
+    .film-card img {
+      width: 100%;
+      border-radius: 5px;
+    }
+
+    .film-card a {
+      color: violet;
+      text-decoration: none;
+      display: block;
+      margin-top: 5px;
+    }
+.movie-title {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: rainbow 3s linear infinite;
+}
+
+@keyframes rainbow {
+  0% {background-position: 0%;}
+  100% {background-position: 100%;}
+}
+/* CHÈN vào style.css hoặc trong <style> của bạn */
+
+.logo-container {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  display: flex;
+  align-items: center;
+  z-index: 9999;
+}
+
+.logo-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+  box-shadow: 0 0 8px #f00, 0 0 16px #f00;
+  animation: logoRainbow 4s linear infinite;
+}
+
+@keyframes logoRainbow {
+  0%   { box-shadow: 0 0 8px #f00, 0 0 16px #f00; }   /* đỏ */
+  16%  { box-shadow: 0 0 8px #ffa500, 0 0 16px #ffa500; } /* cam */
+  32%  { box-shadow: 0 0 8px #ff0, 0 0 16px #ff0; }   /* vàng */
+  48%  { box-shadow: 0 0 8px #0f0, 0 0 16px #0f0; }   /* xanh lá */
+  64%  { box-shadow: 0 0 8px #0ff, 0 0 16px #0ff; }   /* xanh biển */
+  80%  { box-shadow: 0 0 8px #00f, 0 0 16px #00f; }   /* xanh dương */
+  100% { box-shadow: 0 0 8px #f0f, 0 0 16px #f0f; }   /* tím */
+}
+.logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  /* ban đầu để 1 màu bất kỳ */
+  color: #fff;
+  animation: textShake 0.3s infinite,
+             textRainbow 4s linear infinite;
+}
+
+@keyframes textRainbow {
+  0%   { text-shadow: 0 0 4px #f00, 0 0 8px #f00; color: #f00; }
+  16%  { text-shadow: 0 0 4px #ffa500, 0 0 8px #ffa500; color: #ffa500; }
+  32%  { text-shadow: 0 0 4px #ff0, 0 0 8px #ff0; color: #ff0; }
+  48%  { text-shadow: 0 0 4px #0f0, 0 0 8px #0f0; color: #0f0; }
+  64%  { text-shadow: 0 0 4px #0ff, 0 0 8px #0ff; color: #0ff; }
+  80%  { text-shadow: 0 0 4px #00f, 0 0 8px #00f; color: #00f; }
+  100% { text-shadow: 0 0 4px #f0f, 0 0 8px #f0f; color: #f0f; }
+}
+
+@keyframes textShake {
+  0%   { transform: translate(0,0); }
+  25%  { transform: translate(-1px,-1px); }
+  50%  { transform: translate(1px,1px); }
+  75%  { transform: translate(-1px,1px); }
+  100% { transform: translate(1px,-1px); }
+}
+ /**/
+.link-here {
+  color: #3b82f6;       /* màu xanh dương */
+  text-decoration: none;/* bỏ gạch chân mặc định */
+  font-weight: 600;     /* chữ đậm hơn */
+  transition: color 0.2s;
+}
+
+.link-here:hover {
+  color: #60a5fa;       /* đổi màu khi hover */
+  text-decoration: underline;
+}
+  </style>
+</head>
+<body>
+<div class="logo-container">
+  <img src="logo.png" alt="Logo" class="logo-img">
+  <span class="logo-text">Phim hay 24h</span>
+</div>
+
+  <div class="header">
+    <div class="menu-toggle" onclick="toggleSidebar()">&#9776;</div>
+    <div class="title">Trang Phim hay 24h</div>
+  </div>
+
+  <div id="sidebar">
+    <a href="#" onclick="toggleSidebar()"style="color:red; font-weight:bold;">X Đóng</a>
+    <a href="#" onclick="filterPhim('all')">Tất cả</a>
+    <a href="#" onclick="filterPhim('hanhdong')">Hành động</a>
+    <a href="#" onclick="filterPhim('hoathinh')">Hoạt hình</a>
+    <a href="#" onclick="filterPhim('thethao')">Thể thao</a>
+    <a href="#" onclick="filterPhim('tinhcam')"></a>
+  </div>
+
+  <div class="content">
+    <h1>Phim Mới Nhất</h1>
+    <p>
+  Hiện tại trang của mình mới ra mắt lên chưa có nhiều phim cho lắm.
+  Nếu các bạn thấy hay thì cố gắng vào xem mình nhiều hơn nha! Mình cảm ơn.
+  Nếu có thắc mắc hoặc muốn mình ra phim gì thì hãy nhắn cho mình 
+  <a href="hotrokhachhang.html" class="link-here">ở đây</a> nha . Chúc mọi người xem thật vui vẻ🥳
+  </p>
+    <input type="text" class="search" id="searchInput" onkeyup="searchPhim()" placeholder="Tìm phim...">
+    
+
+    <div class="film-list" id="filmList">
+      <!-- PHIM 1 -->
+      <div class="film-card hoathinh">
+        <a href="https://namnopro01072009.github.io/PHIM-CONAN/CONAN.html">
+  <img src="https://ia601609.us.archive.org/26/items/conan_202505/CONAN.jpg" width="200" height="200" alt=" Conan"/>
+      <h2 class="movie-title"> Thám Tử Lừng Danh Conan (FULL)</h2>
+           </a>
+          </div>
+
+      <!-- PHIM 2 -->
+      <div class="film-card thethao">
+
+      <!-- PHIM 3 -->
+      <div class="film-card hanhdong">
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = sidebar.style.display === 'flex' ? 'none' : 'flex';
+    }
+
+    function searchPhim() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.film-card');
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        card.style.display = text.includes(input) ? 'block' : 'none';
+      });
+    }
+
+    function filterPhim(type) {
+      const cards = document.querySelectorAll('.film-card');
+      cards.forEach(card => {
+        if (type === 'all' || card.classList.contains(type)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
