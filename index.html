@@ -24,11 +24,7 @@
       cursor: pointer;
       margin-right: 10px;
     }
-
-    .title {
-      font-size: 20px;
-    }
-
+    
     #sidebar {
       position: fixed;
       top: 0;
@@ -39,6 +35,7 @@
       padding-top: 50px;
       display: none;
       flex-direction: column;
+      z-index: 2000;
     }
 
     #sidebar a {
@@ -90,14 +87,6 @@
       display: block;
       margin-top: 5px;
     }
-.movie-title {
-  font-size: 24px;
-  font-weight: bold;
-  background: linear-gradient(90deg, red, orange, yellow, green, cyan, blue, violet);
-  -webkit-background-clip: text;
-  color: transparent;
-  animation: rainbow 3s linear infinite;
-}
 
 @keyframes rainbow {
   0% {background-position: 0%;}
@@ -173,13 +162,108 @@
   color: #60a5fa;       /* đổi màu khi hover */
   text-decoration: underline;
 }
+.movie-box {
+  width: 150px;
+  margin: 10px;
+  font-family: 'Arial', sans-serif;
+}
+
+.movie-box a {
+  color: white;
+  text-decoration: none;
+}
+
+.movie-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: 0 0 8px rgba(255,255,255,0.1);
+  transition: transform 0.3s ease;
+}
+
+.movie-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-decoration: block;
+}
+
+.movie-thumbnail:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(255,255,255,0.3);
+}
+
+.movie-badge {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+.movie-title {
+  margin-top: 5px;
+  font-size: 13px;
+  color: #fff;
+  text-align: center;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0 10px;
+  border-bottom: 2px solid #444;
+  padding-bottom: 8px;
+}
+
+.section-header h2 {
+  font-size: 24px !important;
+  color: #ffffff !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.section-header .view-all {
+  font-size: 14px !important;
+  color: #ff4444 !important;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.section-header .view-all:hover {
+  color: #ff7777;
+}
+.view-all-btn {
+  background-color: #ff4444;
+  color: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 12px;
+  transition: background-color 0.3s;
+}
+
+.view-all-btn:hover {
+  background-color: #ff7777;
+}
   </style>
 </head>
-  <meta name="google-site-verification" content="XMVOpeF1_oF6BkC09mVLWG6Nb98OM8nnAWm_zISQ8bk" />
 <body>
 <div class="logo-container">
-  <img src="logo.png" alt="Logo" class="logo-img">
-  <span class="logo-text">Phim hay 24h</span>
+  <img src="https://ia600707.us.archive.org/8/items/ea0bbf2a-a1e6-4dca-adcb-08c09526c28a_202505/ea0bbf2a-a1e6-4dca-adcb-08c09526c28a.png" alt="Logo" class="logo-img">
+  <span class="logo-text">Phim Hay 24h</span>
 </div>
 
   <div class="header">
@@ -189,11 +273,11 @@
 
   <div id="sidebar">
     <a href="#" onclick="toggleSidebar()"style="color:red; font-weight:bold;">X Đóng</a>
-    <a href="#" onclick="filterPhim('all')">Tất cả</a>
-    <a href="#" onclick="filterPhim('hanhdong')">Hành động</a>
-    <a href="#" onclick="filterPhim('hoathinh')">Hoạt hình</a>
-    <a href="#" onclick="filterPhim('thethao')">Thể thao</a>
-    <a href="#" onclick="filterPhim('tinhcam')"></a>
+    <a href="all.html">Tất cả</a>
+    <a href="hanhdong.html">Hành động</a>
+    <a href="hoathinh.html">Hoạt hình</a>
+    <a href="thethao.html" >Thể thao</a>
+    <a href="" ></a>
   </div>
 
   <div class="content">
@@ -206,22 +290,23 @@
   </p>
     <input type="text" class="search" id="searchInput" onkeyup="searchPhim()" placeholder="Tìm phim...">
     
-
-    <div class="film-list" id="filmList">
-      <!-- PHIM 1 -->
-      <div class="film-card hoathinh">
-        <a href="https://namnopro01072009.github.io/PHIM-CONAN/CONAN.html">
-  <img src="https://ia601609.us.archive.org/26/items/conan_202505/CONAN.jpg" width="200" height="200" alt=" Conan"/>
-      <h2 class="movie-title"> Thám Tử Lừng Danh Conan (FULL)</h2>
-           </a>
-          </div>
-
-      <!-- PHIM 2 -->
-      <div class="film-card thethao">
-
-      <!-- PHIM 3 -->
-      <div class="film-card hanhdong">
-
+  <div class="section-header">
+  <div style="display: flex; align-items: center; gap: 8px;">
+   <span class="icon">🎬</span>
+     <p class="section-title">Phim Hoạt Hình</p>
+      </div>
+     <a href="phimhoathinh.html" class="view-all-btn">Xem thêm
+    </a>
+  </div>
+ <div class="movie-box">
+     <a href="CONAN.html">
+    <div class="movie-thumbnail">
+      <img src="https://archive.org/download/file_00000000c0ac61f8969e03165a9f234e/file_00000000c0ac61f8969e03165a9f234e.png" alt="Conan">
+      <span class="movie-badge">FULL</span>
+    </div>
+    <p class="movie-title">Thám Tử Lừng Danh Conan </p>
+  </a>
+</div>
   <script>
     function toggleSidebar() {
       const sidebar = document.getElementById('sidebar');
